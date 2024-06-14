@@ -18,6 +18,18 @@ app.get('/alamat',(req,res)=>{
     res.render('alamat.ejs')
 }) 
 
+app.get('/pengalaman',(req,res)=>{
+    res.render('daftar-pengalaman.ejs', {
+        nama: 'Aji Kowiyu',
+        jenis_kelamin: 'L',
+        posisi: 'Senior Programmer',
+        perusahaan: 'Agung Podomoro Group',
+        gaji: 9557000,
+        pajak: (this.gaji > 10000000) ? 'gaji anda kena pajak' : 'aman, ga perlu bayar pajak',
+    })
+}) 
+
+
 app.listen(port, ()=>{
     console.log(`App sudah siap, silahkan buka http://localhost:${port}`)
 })
