@@ -34,7 +34,7 @@ module.exports={
         
     },
 
-    get_satu_karyawan: function () {
+    get_satu_karyawan: function (id) {
         let sql =mysql.format(
                 `SELECT k.*,
                 d.kode as departemen_kode, d.nama as departemen_nama,
@@ -45,7 +45,8 @@ module.exports={
             left join master_departemen as d on d.id=k.departemen_id
             left join master_jabatan as j on j.id=k.jabatan_id
 
-            where k.id=4;`
+            where k.id=?;`,
+            [id]
         )
 
     

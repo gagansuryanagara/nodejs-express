@@ -1,5 +1,13 @@
 <h1>Data Seluruh Karyawan PT Indo Teknik</h1>
 <hr><hr>
+
+<a href="/karyawan/tambah">
+    <button>input karyawan baru</button>
+</a>
+
+<br><br>
+
+
 <table border="1">
     <thead>
         <tr>
@@ -20,7 +28,7 @@
             <td><%= semua_karyawan[i].departemen_kode %></td>
             <td><%= semua_karyawan[i].jabatan_nama %></td>
             <td>	
-                <a href="/karyawan/detail">
+                <a href="/karyawan/detail/<%= semua_karyawan[i].id  %>">
                     <button>detail</button>
                 </a>
             </td>

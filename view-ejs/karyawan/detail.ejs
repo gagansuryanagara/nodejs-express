@@ -1,7 +1,9 @@
-<h1>detail data karyawan</h1>
-<hr><hr>
+<% if (detail_karyawan.length>0) { %>
 
-<ul>
+    <h1>detail data karyawan</h1>
+    <hr><hr>
+
+    <ul>
     <li>Nama: <%= detail_karyawan[0].nama  %></li>
     <li>alamat: <%= detail_karyawan[0].alamat  %></li>
     <li>nomor telepon: <%= detail_karyawan[0].no_telepon  %></li>
@@ -11,8 +13,14 @@
     <li>jabatan: <%= detail_karyawan[0].jabatan_nama  %></li>
     <li>role: <%= detail_karyawan[0].jabatan_role  %></li>
     <li>tugas: <%= detail_karyawan[0].jabatan_deskripsi  %></li>
+    </ul>
 
-</ul>
+<% } else { %>
+    <h1>tidak ada karyawan yang anda minta</h1>
+<% } %>
+
+
+
 
 
 <pre>
