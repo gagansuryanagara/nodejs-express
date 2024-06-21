@@ -1,5 +1,8 @@
 <h1>Data Seluruh Karyawan PT Indo Teknik</h1>
 <hr><hr>
+<% if(req.query.note == 'insert-sukses') { %>
+    <strong style='color: green;'>Berhasil simpan data</strong> <br><br>
+<% } %>
 
 <a href="/karyawan/tambah">
     <button>input karyawan baru</button>

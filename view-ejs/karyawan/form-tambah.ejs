@@ -1,6 +1,14 @@
 <h1>Form input karyawan baru</h1>
 <hr><hr>
 
+<% if (info_error) { %>
+    <strong style='color: red;'>
+        <%= info_error.errno %> - <%= info_error.code %> <br>
+        <%= info_error.sqlMessage %> <br>
+    </strong>
+    <br>
+ <% } %>   
+
 <form action="/karyawan/proses-simpan" method="post">
 
     <label>Nama Lengkap</label>

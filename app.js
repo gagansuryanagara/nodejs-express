@@ -34,6 +34,7 @@ app.get('/pengalaman',(req,res)=>{
 app.get('/karyawan', async(req,res)=>{
     const m_karyawan=require('./model/m_karyawan')
     let dataview ={
+        req: req,
         semua_karyawan: await m_karyawan.get_semua_karyawan(),
     }
     res.render('karyawan/all', dataview)
@@ -49,16 +50,24 @@ app.get('/karyawan/detail/:id_karyawan', async(req,res)=>{
 })
 
 app.get('/karyawan/tambah',async(req,res)=>{
-    res.render('karyawan/form-tambah')
+    res.render('karyawan/form-tambah', {info_error: null})
 })
 
-app.post('/karyawan/proses-simpan',async(req,res)=>{
+app.post('/karyawan/proses-simpan', async(req,res)=>{
     // ambil kiriman dari form html satu-satu
-    let nama_lengkap=req.body.nama_lengkap
-    let alamat=req.body.alamat
+    // let nama_lengkap=req.body.nama_lengkap
+    // let alamat=req.body.alamat
     // ambl semuanya
-    res.send(req.body)
-
+    // res.send(req.body)
+    const m_karyawan = require('./model/m_karyawan')
+    try {
+        let insert = await m_karyawan.tambah_karyawan (req)
+        if (insert.affectedRows>0){
+            res.redirect('/karyawan?note=insert-sukses')
+    }
+    } catch (error) {
+        res.render('/karyawan/form-tambah', {info_error: error})
+    }
 })
 
 

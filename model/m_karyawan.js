@@ -62,5 +62,31 @@ module.exports={
         
     },
 
+    tambah_karyawan:function(req){
+        let data={
+            // nama kolom di sql: req.body.name
+            nama            : req.body.nama_lengkap,
+            alamat          : req.body.alamat,
+            no_telepon      : req.body.no_tlp,
+            gol_darah       : req.body.gol_darah,
+            jenis_kelamin   : req.body.jns_kelamin,
+        }
+        let sql =mysql.format(
+            `insert into karyawan set ?`,
+            [data]
+    )
+
+
+    return new Promise ((resolve,reject)=>{
+        db.query(sql,function(errorSql,hasil){
+            if (errorSql){
+                reject(errorSql)
+            } else {
+                resolve(hasil)
+            }
+        })
+    })
+
+    },
 
 }
